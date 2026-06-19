@@ -1,0 +1,15 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode/
+.idea/
+*.swp
+
+# Packaging / artifacts
+*.zip
+*.crx
+*.pem
+node_modules/
+web-ext-artifacts/

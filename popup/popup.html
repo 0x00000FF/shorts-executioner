@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="popup.css" />
+  <title>쇼츠 처형자 설정</title>
+</head>
+<body>
+  <header class="hd">
+    <div class="logo" aria-hidden="true">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2.2"/><line x1="5.6" y1="5.6" x2="18.4" y2="18.4" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+    </div>
+    <div>
+      <h1>쇼츠 처형자</h1>
+      <p class="sub">원클릭 싫어요·관심없음·채널추천안함 + 채널 영구 차단</p>
+    </div>
+  </header>
+
+  <main>
+    <label class="row">
+      <span class="row-main">
+        <span class="t">확장 켜기</span>
+        <span class="d">전체 기능 on/off</span>
+      </span>
+      <input type="checkbox" id="enabled" />
+    </label>
+
+    <hr />
+    <p class="grp">원클릭 처리 버튼</p>
+
+    <label class="row">
+      <span class="row-main">
+        <span class="t">쇼츠 플레이어</span>
+        <span class="d">쇼츠 버튼 모음에 처리 버튼 추가</span>
+      </span>
+      <input type="checkbox" id="onShorts" />
+    </label>
+
+    <label class="row">
+      <span class="row-main">
+        <span class="t">추천 / 피드 썸네일</span>
+        <span class="d">썸네일에 처리 버튼 추가</span>
+      </span>
+      <input type="checkbox" id="onFeed" />
+    </label>
+
+    <label class="row">
+      <span class="row-main">
+        <span class="t">싫어요도 함께</span>
+        <span class="d">쇼츠에서 싫어요까지 누름</span>
+      </span>
+      <input type="checkbox" id="alsoDislike" />
+    </label>
+
+    <div class="row col">
+      <span class="row-main">
+        <span class="t">메뉴 동작</span>
+        <span class="d">한 카드에서 관심없음/채널추천안함은 1개만 적용됨</span>
+      </span>
+      <select id="menuAction">
+        <option value="both">둘 다 시도 (채널 추천 안함 → 관심 없음)</option>
+        <option value="channel">채널 추천 안함만</option>
+        <option value="video">관심 없음만</option>
+      </select>
+    </div>
+
+    <hr />
+    <p class="grp">채널 영구 차단</p>
+
+    <label class="row">
+      <span class="row-main">
+        <span class="t">채널 차단 버튼</span>
+        <span class="d">버튼으로 채널을 차단 목록에 추가</span>
+      </span>
+      <input type="checkbox" id="blockChannel" />
+    </label>
+
+    <label class="row">
+      <span class="row-main">
+        <span class="t">차단 쇼츠 자동 스킵</span>
+        <span class="d">차단 채널 쇼츠는 재생 전에 다음으로 넘김</span>
+      </span>
+      <input type="checkbox" id="autoSkipShorts" />
+    </label>
+
+    <label class="row">
+      <span class="row-main">
+        <span class="t">피드에서 숨김 (DOM 안전망)</span>
+        <span class="d">인터셉터가 놓친 잔여 카드를 추가로 숨김</span>
+      </span>
+      <input type="checkbox" id="hideBlockedFeed" />
+    </label>
+
+    <div class="bl">
+      <div class="bl-hd">
+        <span>차단된 채널 <span id="blCount" class="badge">0</span></span>
+        <button id="blClear" class="link-btn" type="button">전체 비우기</button>
+      </div>
+      <ul id="blList" class="bl-list"></ul>
+      <p id="blEmpty" class="bl-empty">아직 차단한 채널이 없습니다. 영상/쇼츠의 차단 버튼을 누르면 여기에 쌓입니다.</p>
+    </div>
+
+    <details class="adv">
+      <summary>고급</summary>
+      <div class="row col">
+        <span class="row-main">
+          <span class="t">동작 간 지연 (ms)</span>
+          <span class="d">너무 빠르면 '금지된 작업입니다' 제한에 걸림</span>
+        </span>
+        <input type="number" id="throttleMs" min="0" max="2000" step="50" />
+      </div>
+    </details>
+  </main>
+
+  <footer>
+    <span id="status" class="status"></span>
+    <span class="ver">신고 기능은 약관(신고 남용) 위험으로 제외됨 · 데이터 외부 전송 없음</span>
+  </footer>
+
+  <script src="popup.js"></script>
+</body>
+</html>
